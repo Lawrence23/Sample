@@ -26,35 +26,49 @@
           // transform the CSV string into a 2-dimensional array
           var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
 
-          // // // use arrayData to load the select elements with the appropriate options
-          // // for (var i = 0; i < arrayData[0].length; i++) {
-          // //    // this adds the given option to both select elements
-          // //    $("select").append("<option value='" + i + "'>" + arrayData[0][i] + "</option");
-          // // }
-          // // set the default selection
-          // $("#domain option[value='0']").attr("selected","selected");
-          // $("#range option[value='1']").attr("selected","selected");
-
           // this new DataTable object holds all the data
-          var data = new google.visualization.arrayToDataTable(arrayData);
+          // var data = new google.visualization.arrayToDataTable(arrayData);
+          var query = new google.visualization.Query(arrayData);
 
-          // this view can select a subset of the data at a time
-          var view = new google.visualization.DataView(data);
-          view.setColumns([0,1]);
+          // Apply query language statement.
+          query.setQuery('SELECT UNIQUE(PolicyType)');
+    
+          // Send the query with a callback function.
+          query.send(handleQueryResponse);
+  
+          // // this view can select a subset of the data at a time
+          // var view = new google.visualization.DataView(data);
+          // view.setColumns([0,1]);
 
-          var options = {
-            title: "Sample",
-            // hAxis: {title: data.getColumnLabel(0), minValue: data.getColumnRange(0).min, maxValue: data.getColumnRange(0).max},
-            // vAxis: {title: data.getColumnLabel(1), minValue: data.getColumnRange(1).min, maxValue: data.getColumnRange(1).max},
-            legend: 'none'
-          };
+          // var options = { title: "Sample" };
 
-          var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
-          chart.draw(view, options);
+          // var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+          // chart.draw(view, options);
         });
       }
+      function handleQueryResponse(response) {
+        if (response.isError()) {
+          alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+          return;
+        }
 
-      </script>
+        var view = response.getDataTable();
+        
+        var options = { title: "Sample" };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+        chart.draw(view, options);
+
+
+
+
+
+        // var data = response.getDataTable();
+        // visualization = new google.visualization.LineChart(document.getElementById('visualization'));
+        // visualization.draw(data, {legend: 'bottom'});
+      }
+
+     </script>
 
 
 
