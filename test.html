@@ -12,17 +12,7 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-        var xmlhttp = new XMLHttpRequest();
-var url = "Sample.txt";
-
-xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-        var myArr = JSON.parse(xmlhttp.responseText);
-        drawChart(myArr);
-    }
-}
-xmlhttp.open("GET", url, true);
-xmlhttp.send();
+        
 
 // function myFunction(arr) {
 //     var out = "";
@@ -35,7 +25,17 @@ xmlhttp.send();
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       
-      function drawChart(arr) {
+      function drawChart() {
+        var xmlhttp = new XMLHttpRequest();
+        var url = "Sample.txt";
+
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var arr = JSON.parse(xmlhttp.responseText);
+          } 
+        }
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
 
         var data = google.visualization.arrayToDataTable([
           ['Type', 'Sold'],
