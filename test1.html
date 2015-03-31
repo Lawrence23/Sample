@@ -21,7 +21,7 @@ function myFunction(arr) {
     var out = "";
     var i;
     for(i = 0; i < arr.length; i++) {
-        out += arr[i].policytype + arr[i].sex + '<br>' + arr[i].Country + arr[i].Age + arr[i].State + arr[i].city + arr[i].Policydate+  arr[i].Policysold+ arr[i].policysurrendered + arr[i].policytype arr[i].Policylapsed + arr[i].approval;
+        out += '<p>' + arr[i].policytype + arr[i].sex + '<br>' + arr[i].Country + arr[i].Age + arr[i].State + arr[i].city + arr[i].Policydate+  arr[i].Policysold+ arr[i].policysurrendered + arr[i].policytype arr[i].Policylapsed + arr[i].approval + '</p><br>';
     }
     document.getElementById("id01").innerHTML = out;
 }
