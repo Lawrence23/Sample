@@ -12,17 +12,35 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript">
+        var xmlhttp = new XMLHttpRequest();
+var url = "Sample.txt";
+
+xmlhttp.onreadystatechange = function() {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+        var myArr = JSON.parse(xmlhttp.responseText);
+        drawChart(myArr);
+    }
+}
+xmlhttp.open("GET", url, true);
+xmlhttp.send();
+
+// function myFunction(arr) {
+//     var out = "";
+//     var i;
+//     for(i = 0; i < arr.length; i++) {
+//         out += '<p>' + arr[i].policytype  + '<br>' + arr[i].sex + '<br>' + arr[i].Country + '</p><br>';
+//     }
+//     document.getElementById("id01").innerHTML = out;
+// }    
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
-      function drawChart() {
+      
+      function drawChart(arr) {
 
         var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Work',     11],
-          ['Eat',      2],
-          ['Commute',  2],
-          ['Watch TV', 2],
-          ['Sleep',    7]
+          ['Type', 'Sold'],
+          [arr[0].policytype ,    arr[0].Policysold],
+          [arr[1].policytype ,    arr[1].Policysold],
         ]);
 
         var options = {
@@ -34,6 +52,9 @@
         chart.draw(data, options);
       }
     </script>
+
+
+
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
