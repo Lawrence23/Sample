@@ -11,41 +11,32 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    
     <script type="text/javascript">
-        
-
-// function myFunction(arr) {
-//     var out = "";
-//     var i;
-//     for(i = 0; i < arr.length; i++) {
-//         out += '<p>' + arr[i].policytype  + '<br>' + arr[i].sex + '<br>' + arr[i].Country + '</p><br>';
-//     }
-//     document.getElementById("id01").innerHTML = out;
-// }    
-      google.load("visualization", "1", {packages:["corechart"]});
+      google.load("visualization", '1', {packages:['corechart']});
       google.setOnLoadCallback(drawChart);
-      
       function drawChart() {
-        var xmlhttp = new XMLHttpRequest();
-        var url = "Sample.txt";
-        var arr=
-        JSON.parse(xmlhttp.responseText);
-       
-        xmlhttp.open("GET", url, true);
-        xmlhttp.send();
+        var opts = {sendMethod: 'auto'};
+  
+        var query = new google.visualization.Query('https://docs.google.com/a/qburst.com/spreadsheets/d/13SAp4SJKnT2uGzg_s8biS1xuj-DcmkEsJ75it0NMMnc/edit#gid=0', opts);
 
-        var data = google.visualization.arrayToDataTable([
-          ['Type', 'Sold'],
-          [arr[0].policytype ,    arr[0].Policysold],
-          [arr[1].policytype ,    arr[1].Policysold],
-        ]);
+        // Optional request to return only column C and the sum of column B, grouped by C members.
+        query.setQuery('select unique(A), count(A)');
 
-        var options = {
-          title: 'My Daily Activities'
-        };
+         // Send the query with a callback function.
+        query.send(handleQueryResponse);
+      }
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+      function handleQueryResponse(response) {
+        if (response.isError()) {
+          alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+          return;
+        }
 
+        var data = response.getDataTable();
+        var chart = new google.visualization.PieChart(document.getElementById('piechart2'));
         chart.draw(data, options);
       }
     </script>
