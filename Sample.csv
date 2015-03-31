@@ -2,3 +2,9 @@ PolicyType,PolicySold
 Medical,50
 Vehice, 30
 Life,20
+Medical,10
+Vehice, 40
+Life,60
+Medical,70
+Vehice, 80
+Life,90
