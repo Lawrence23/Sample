@@ -23,7 +23,7 @@
         var query = new google.visualization.Query('https://docs.google.com/a/qburst.com/spreadsheets/d/13SAp4SJKnT2uGzg_s8biS1xuj-DcmkEsJ75it0NMMnc/edit#gid=0', opts);
 
         // Optional request to return only column C and the sum of column B, grouped by C members.
-        query.setQuery('select unique(A), count(A)');
+        //query.setQuery('select unique(A), count(A)');
 
          // Send the query with a callback function.
         query.send(handleQueryResponse);
