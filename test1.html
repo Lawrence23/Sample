@@ -21,7 +21,7 @@ function myFunction(arr) {
     var out = "";
     var i;
     for(i = 0; i < arr.length; i++) {
-        out += '<p>' + arr[i].policytype  + '</p><br>';
+        out += '<p>' + arr[i].policytype  + arr[i].sex + arr[i].Country + arr[i].Age + arr[i].State + arr[i].city + arr[i].Policydate+  arr[i].Policysold+ arr[i].policysurrendered + arr[i].Policylapsed + arr[i].approval'</p><br>';
     }
     document.getElementById("id01").innerHTML = out;
 }
@@ -29,4 +29,4 @@ function myFunction(arr) {
 
 </body>
 </html>
-<!-- + arr[i].sex + arr[i].Country + arr[i].Age + arr[i].State + arr[i].city + arr[i].Policydate+  arr[i].Policysold+ arr[i].policysurrendered + arr[i].policytype arr[i].Policylapsed + arr[i].approval -->
+<!--  -->
