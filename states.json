@@ -1,0 +1,29 @@
+{
+	"states": [
+		{
+			"abbrev":"US-AL",
+			"name":"Alabama",
+			"unemprate":6.9,
+			"income":41415,
+			"population":4822023,
+			"region":"south"
+		},
+		{
+			"abbrev":"US-AK",
+			"name":"Alaska",
+			"unemprate":6.7,
+			"income":67825,
+			"population":731449,
+			"region":"west"
+		},
+		{
+			"abbrev":"US-AZ",
+			"name":"Arizona",
+			"unemprate":8.0,
+			"income":46709,
+			"population":6553255,
+			"region":"west"
+		},
+	]
+}	
+			
