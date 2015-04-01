@@ -10,13 +10,15 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="jquery.csv-0.71.js"></script>
     
     
     <script type="text/javascript">
+      google.load('visualization', '1', {'packages': ['geochart']});
+      google.setOnLoadCallback(drawStatesMap);
       function drawStatesMap() {
         var options = {region: 'US', resolution: 'provinces'};
         var dimension = "population";
@@ -35,14 +37,11 @@
           $("h3").append(" Sorted by  "+dimension);
         });
       }
-      google.load('visualization', '1', {'packages': ['geochart']});
-      google.setOnLoadCallback(drawStatesMap);
-     
     </script>
   </head>
   <body>
     <div class="container-fluid">
-      <div id="chart_div" style="width: 700px; height: 350px;"></div>     
+      <div id="chart_div"></div>     
     </div>
   </body>
 </html>
