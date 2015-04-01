@@ -14,6 +14,7 @@
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery.csv-0.71.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     
     <script type="text/javascript">
       // Load the Visualization API and the piechart package.
@@ -82,7 +83,7 @@
       }
     </script>
 
-    <script type="text/javascript">
+   <!--  <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
       function drawChart() {
@@ -104,7 +105,7 @@
 
         chart.draw(data, options);
       }
-    </script>
+    </script> -->
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
       google.setOnLoadCallback(drawChart);
@@ -156,18 +157,18 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-6">
-          <div id="piechart1" style="width: 700px; height: 350px;"></div>
+          <div id="chart-div-1"></div>
         </div>
         <div class="col-md-6">
-          <div id="piechart2" style="width: 700px; height: 350px;"></div>
+          <div id="chart-div-2"></div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6">
-          <div id="piechart3" style="width: 700px; height: 350px;"></div>
+          <div id="piechart3"></div>
         </div>
         <div class="col-md-6">
-          <div id="piechart4" style="width: 700px; height: 350px;"></div>
+          <div id="piechart4"></div>
         </div>
       </div>
     </div>
