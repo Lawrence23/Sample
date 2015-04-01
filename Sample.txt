@@ -1,28 +1,54 @@
 [
-    {
-        "policytype": "medical",
-        "sex": "male",
+       {
+        "PolicyType": "Medical",
+        "Sex": "Male",
         "Country": "India",
         "Age": "25",
         "State": "Kerala",
-        "city": "TVPM",
+        "City": "Kochi",
         "Policydate": "29-March-2015",
-        "Policysold": 50,
-        "policysurrendered": 10,
-        "Policylapsed": 10,
-        "approval": 40
+        "PolicySold": 50,
+        "PolicySurrendered": 10,
+        "PolicyLapsed": 10,
+        "PolicyApproved": 40
     },
     {
-        "policytype": "Vehicle",
-        "sex": "male",
+        "PolicyType": "Vehicle",
+        "Sex": "Female",
         "Country": "India",
         "Age": "25",
         "State": "Kerala",
-        "city": "TVPM",
+        "City": "TVPM",
         "Policydate": "29-March-2015",
-        "Policysold": 50,
-        "policysurrendered": 10,
+        "PolicySold": 70,
+        "PolicySurrendered": 10,
         "Policylapsed": 10,
-        "approval": 40
-    }
+        "PolicyApproved": 40
+    }, 
+    {
+        "PolicyType": "Health",
+        "Sex": "Female",
+        "Country": "India",
+        "Age": "25",
+        "State": "Kerala",
+        "City": "TVPM",
+        "Policydate": "29-March-2015",
+        "PolicySold": 80,
+        "PolicySurrendered": 10,
+        "Policylapsed": 10,
+        "PolicyApproved": 40
+    },
+     {
+        "PolicyType": "Theft",
+        "Sex": "Male",
+        "Country": "India",
+        "Age": "25",
+        "State": "Kerala",
+        "City": "TVPM",
+        "Policydate": "29-March-2015",
+        "PolicySold": 500,
+        "PolicySurrendered": 30,
+        "Policylapsed": 20,
+        "PolicyApproved": 60
+        }
 ]

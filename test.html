@@ -13,38 +13,74 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="jquery.csv-0.71.js"></script>
+    <script src="js/jquery.csv-0.71.js"></script>
     
     <script type="text/javascript">
-      // load the visualization library from Google and set a listener
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      var xmlhttp = new XMLHttpRequest();
+      var url ="Sample.txt";
 
-      function drawChart() {
-        // grab the CSV
-        $.get("Sample.csv", function(csvString) {
-          // transform the CSV string into a 2-dimensional array
-          var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          var myArr = JSON.parse(xmlhttp.responseText);
+         
+          myFunction(myArr);
+        }
+      }
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+     
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart(myArr) {
 
-          // this new DataTable object holds all the data
-          var data = new google.visualization.arrayToDataTable(arrayData);
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Type');
+        data.addColumn('number', 'Sold');
+        data.addRows([
+          [myArr[0].PolicyType, myArr[0].PolicySold],
+          [myArr[1].PolicyType, myArr[1].PolicySold],
+          [myArr[2].PolicyType, myArr[2].PolicySold],
+          [myArr[3].PolicyType, myArr[3].PolicySold],
+        ]);
 
-          // this view can select a subset of the data at a time
-          var view = new google.visualization.DataView(data);
-          view.setColumns([0,1]);
+        // Set chart options
+        var options = {'title':'Type vs No: Sold',
+                       'width':400,
+                       'height':300};
 
-          var options = {
-            title: "Sample",
-          };
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart-div-1'));
+        chart.draw(data, options);
+        
+        var data1 = new google.visualization.DataTable();
+        data1.addColumn('string', 'Type');
+        data1.addColumn('number', 'Sold');
+        data1.addRows([
+          [myArr[0].PolicyType, myArr[0].PolicyApproved],
+          [myArr[1].PolicyType, myArr[1].PolicyApproved],
+          [myArr[2].PolicyType, myArr[2].PolicyApproved],
+          [myArr[3].PolicyType, myArr[3].PolicyApproved],
+        ]);
 
-          var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
-          chart.draw(view, options);
-        });
+        // Set chart options
+        var options1 = {'title':'Type vs No: Approved',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart-div-2'));
+        chart.draw(data1, options1);
       }
 
-      </script>
-
-
+      function myFunction(myArr){
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(drawChart(myArr) );
+      }
+    </script>
 
     <script type="text/javascript">
       google.load("visualization", "1", {packages:["corechart"]});
